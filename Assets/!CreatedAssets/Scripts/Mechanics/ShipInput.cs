@@ -50,7 +50,13 @@ public class ShipInput : MonoBehaviour {
     {
         if(other.tag == "Meteor")
         {
-            _healthBar.UpdateHealthAmount(-100f);
+            _healthBar.GetComponent<PhotonView>().RPC("UpdateHealthAmount", PhotonTargets.All, -100f);
+            Destroy(other.gameObject);
+        }
+
+        if (other.tag == "Ufo")
+        {
+            _healthBar.GetComponent<PhotonView>().RPC("UpdateHealthAmount", PhotonTargets.All, -300f);
             Destroy(other.gameObject);
         }
     }

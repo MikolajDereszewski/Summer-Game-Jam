@@ -13,6 +13,7 @@ public class HealthBar : MonoBehaviour {
     [SerializeField]
     private Image _healthBarImage = null;
     
+    [PunRPC]
     public void UpdateHealthAmount(float delta)
     {
         _health += delta;

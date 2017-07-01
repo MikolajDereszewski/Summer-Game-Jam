@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Summer-Game-Jam.Plugins", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Summer-Game-Jam", "Summer-Game-Jam.csproj", "{ABD6FDDD-33E8-86DF-1A3B-191C78A04B92}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Summer-Game-Jam.Editor.Plugins", "Summer-Game-Jam.Editor.Plugins.csproj", "{C1C644C4-E71E-A521-AC30-1996253F8179}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Summer-Game-Jam.Editor", "Summer-Game-Jam.Editor.csproj", "{F58C0D7F-38EF-C904-6884-D6324964FEE1}"
 EndProject
 Global
@@ -21,6 +23,10 @@ Global
 		{ABD6FDDD-33E8-86DF-1A3B-191C78A04B92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABD6FDDD-33E8-86DF-1A3B-191C78A04B92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABD6FDDD-33E8-86DF-1A3B-191C78A04B92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1C644C4-E71E-A521-AC30-1996253F8179}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1C644C4-E71E-A521-AC30-1996253F8179}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1C644C4-E71E-A521-AC30-1996253F8179}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1C644C4-E71E-A521-AC30-1996253F8179}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F58C0D7F-38EF-C904-6884-D6324964FEE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F58C0D7F-38EF-C904-6884-D6324964FEE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F58C0D7F-38EF-C904-6884-D6324964FEE1}.Release|Any CPU.ActiveCfg = Release|Any CPU

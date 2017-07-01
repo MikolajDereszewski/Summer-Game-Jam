@@ -21,7 +21,7 @@ public class MeteorScript : MonoBehaviour {
         if(_gameManager != null)
             _speed = _gameManager.GameSpeed * 50f;
         transform.Translate(_movementVector * _speed * Time.deltaTime);
-        if (transform.position.x <= -200)
+        if (transform.position.z <= -15)
             Destroy(gameObject);
     }
 }
