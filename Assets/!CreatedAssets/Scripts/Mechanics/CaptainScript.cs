@@ -21,8 +21,8 @@ public class CaptainScript : Photon.MonoBehaviour {
 
     private Vector2 LoadJoystickInput()
     {
-        float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
+        float x = Input.GetAxis("Horizontal");
         return new Vector2(x, y);
     }
 }
