@@ -4,12 +4,25 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-	public void StartGame()
+    public bool Started { get { return _started; } }
+
+    private bool _started;
+
+    private void Awake()
     {
-        if(!(PhotonNetwork.countOfPlayers == 2))
+        _started = false;
+        StartCoroutine(CheckForTwoPlayers());
+    }
+
+    private IEnumerator CheckForTwoPlayers()
+    {
+        while(!(PhotonNetwork.playerList.Length == 2))
         {
-            Debug.LogError("Not all players had connected to the game! Not starting");
-            return;
+            _started = false;
+            Debug.Log(PhotonNetwork.playerList.Length);
+            yield return null;
         }
+        Debug.Log(PhotonNetwork.playerList.Length);
+        _started = true;
     }
 }

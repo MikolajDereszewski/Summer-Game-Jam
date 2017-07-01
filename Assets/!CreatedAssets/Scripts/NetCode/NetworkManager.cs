@@ -12,9 +12,11 @@ public enum PlayerType
 public class NetworkManager : MonoBehaviour {
 
     [SerializeField]
-    private string _gameVersion = "0.0.1";
+    private string _gameVersion = "0.0.2";
     [SerializeField]
     private GameManager _gameManager = null;
+    [SerializeField]
+    private Transform _shipGameObject = null;
 
     [SerializeField]
     private GameObject _captainPrefab = null;
@@ -24,32 +26,37 @@ public class NetworkManager : MonoBehaviour {
     private void Start()
     {
         PhotonNetwork.ConnectUsingSettings(_gameVersion);
-        //JoinRoom((PlayerPrefs.GetInt("LOCAL_PLAYER_TYPE") == 0) ? PlayerType.Captain : PlayerType.Shooter);
     }
 
-    private void JoinRoom(PlayerType type)
+    private void JoinRoom()
     {
-        switch(type)
-        {
-            case PlayerType.Captain:
-                RoomOptions roomOptions = new RoomOptions() { isVisible = true, maxPlayers = 2 };
-                PhotonNetwork.CreateRoom("GAME_ROOM", roomOptions, TypedLobby.Default);
-                break;
-            case PlayerType.Shooter:
-                PhotonNetwork.JoinRoom("GAME_ROOM");
-                break;
-        }
-        AddPlayer(type);
+        RoomOptions roomOptions = new RoomOptions() { isVisible = true, maxPlayers = 2 };
+        PhotonNetwork.JoinOrCreateRoom("GAME_ROOM", roomOptions, TypedLobby.Default);
     }
 
     void OnJoinedLobby()
     {
-        JoinRoom((PlayerPrefs.GetInt("LOCAL_PLAYER_TYPE") == 0) ? PlayerType.Captain : PlayerType.Shooter);
         Debug.Log("Joined to lobby!");
+        JoinRoom();
+    }
+
+    void OnJoinedRoom()
+    {
+        Debug.Log("Joined to the room!");
+        AddPlayer((PlayerPrefs.GetInt("LOCAL_PLAYER_TYPE") == 0) ? PlayerType.Captain : PlayerType.Shooter);
     }
 
     private void AddPlayer(PlayerType type)
     {
-        _gameManager.StartGame();
+        Debug.Log("Player added!");
+        switch (type)
+        {
+            case PlayerType.Captain:
+                PhotonNetwork.Instantiate("CaptainPlayer", new Vector3(0, 0, -10), Quaternion.identity, 0);
+                break;
+            case PlayerType.Shooter:
+                PhotonNetwork.Instantiate("ShooterPlayer", new Vector3(0, 0, -20), Quaternion.identity, 0);
+                break;
+        }
     }
 }
