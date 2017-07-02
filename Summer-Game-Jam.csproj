@@ -107,6 +107,7 @@
     <Compile Include="Assets\!CreatedAssets\Scripts\Menu\MainMenuScript.cs" />
     <Compile Include="Assets\!CreatedAssets\Scripts\NetCode\NetworkManager.cs" />
     <Compile Include="Assets\!CreatedAssets\Scripts\Servives\GameManager.cs" />
+    <Compile Include="Assets\!CreatedAssets\Scripts\Servives\LoadLeaderboard.cs" />
     <Compile Include="Assets\!CreatedAssets\Scripts\Servives\SaveHighScore.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\Demo2DJumpAndRunWithPhysics\Scripts\Demo2DJumpAndRun.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\Demo2DJumpAndRunWithPhysics\Scripts\JumpAndRunMovement.cs" />

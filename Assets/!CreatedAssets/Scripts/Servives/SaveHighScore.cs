@@ -25,8 +25,7 @@ public class HighscoreContainer
 
 public class SaveHighScore : MonoBehaviour
 {
-
-    const string file = "E:/GAMEJAM_LEADERBOARD/Scores.txt";
+    const string file = "C:/Users/Mixer/OneDrive/Scores.txt";
 
     [SerializeField]
     private GameManager _gameManager = null;
@@ -38,7 +37,6 @@ public class SaveHighScore : MonoBehaviour
     public void SaveHighscoresToJSON()
     {
         HighscoreContainer loadedContainer = LoadHighscoresFromJSON();
-        Debug.Log(loadedContainer.allHighScores.Count);
         if (loadedContainer == null)
         {
             loadedContainer = new HighscoreContainer();
@@ -47,9 +45,20 @@ public class SaveHighScore : MonoBehaviour
 
         HighScore addedHighscore = new HighScore(_inputText.text, _gameManager.Distance);
 
-        loadedContainer.allHighScores.Add(addedHighscore);
-
-        //DebugWholeHighscoreList(loadedContainer);
+        for(int i = 0; i <= loadedContainer.allHighScores.Count; i++)
+        {
+            if(i == loadedContainer.allHighScores.Count)
+            {
+                loadedContainer.allHighScores.Add(addedHighscore);
+                break;
+            }
+            if(loadedContainer.allHighScores[i].score <= addedHighscore.score)
+            {
+                loadedContainer.allHighScores.Insert(i, addedHighscore);
+                break;
+            }
+        }
+        
         SaveJSONToFile(JsonUtility.ToJson(loadedContainer, true));
     }
 

@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour {
     private AnimationCurve _gameSpeedCurve = new AnimationCurve();
     [SerializeField]
     private Text _distanceText;
+    [SerializeField]
+    private Animator _startAnimation;
 
     private bool _started;
     private bool _dead;
@@ -66,15 +68,17 @@ public class GameManager : MonoBehaviour {
     private IEnumerator CreateObstacles()
     {
         Vector2 delayClamp = (PlayerPrefs.GetInt("LOCAL_PLAYER_TYPE") == 0) ? new Vector2(0.6f, 1.2f) : new Vector2(2f, 4f);
-        WaitForSeconds delay = new WaitForSeconds(1f);
-        while(!_dead)
+        WaitForSeconds delay = new WaitForSeconds(5f);
+        yield return delay;
+        _startAnimation.Play("StartGameAnimation");
+        while (!_dead)
         {
-            yield return delay;
             if (PlayerPrefs.GetInt("LOCAL_PLAYER_TYPE") == 0)
                 InstantiateMeteor();
             else
                 InstantiateUfo();
             delay = new WaitForSeconds(Random.Range(delayClamp.x, delayClamp.y) / _gameSpeed);
+            yield return delay;
         }
     }
 

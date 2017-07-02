@@ -80,8 +80,8 @@ public class ShooterScript : Photon.MonoBehaviour {
 
     private Vector2 LoadJoystickInput()
     {
-        float y = Input.GetAxis("Mouse Y");
-        float x = Input.GetAxis("Mouse X");
+        float y = Input.GetAxis("Vertical");
+        float x = Input.GetAxis("Horizontal");
         return new Vector2(x, y);
     }
 
