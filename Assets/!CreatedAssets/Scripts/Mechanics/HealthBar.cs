@@ -16,6 +16,13 @@ public class HealthBar : MonoBehaviour {
     private GameManager _manager;
 
     [SerializeField]
+    private GameObject _normalExitButton = null;
+    [SerializeField]
+    private GameObject _saveScoreButton = null;
+    [SerializeField]
+    private GameObject _saveInputField = null;
+
+    [SerializeField]
     private GameObject _gameOverCanvas = null;
     
     [PunRPC]
@@ -31,6 +38,13 @@ public class HealthBar : MonoBehaviour {
     {
         _manager.Dead = true;
         _gameOverCanvas.SetActive(true);
+        if (PlayerPrefs.GetInt("LOCAL_PLAYER_TYPE") == 0)
+        {
+            _saveScoreButton.SetActive(true);
+            _saveInputField.SetActive(true);
+        }
+        else
+            _normalExitButton.SetActive(true);
     }
 
 }

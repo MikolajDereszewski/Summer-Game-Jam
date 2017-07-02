@@ -14,6 +14,8 @@ public class ShooterScript : Photon.MonoBehaviour {
     private Transform _shotSpawn1 = null;
     [SerializeField]
     private Transform _shotSpawn2 = null;
+    [SerializeField]
+    private AudioSource _shotSound = null;
 
     private Transform _ship;
     private GameManager _manager;
@@ -46,6 +48,8 @@ public class ShooterScript : Photon.MonoBehaviour {
         while(IsTriggerPressed() && !_manager.Dead)
         {
             CreateShots();
+            _shotSound.pitch = Random.Range(0.9f, 1.2f);
+            _shotSound.Play();
             yield return delay;
         }
         _shootingCoroutine = null;

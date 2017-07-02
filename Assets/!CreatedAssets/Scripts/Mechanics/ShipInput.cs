@@ -6,6 +6,8 @@ public class ShipInput : MonoBehaviour {
     private HealthBar _healthBar = null;
     [SerializeField]
     private Vector2 _positionSquareClamp = new Vector2();
+    [SerializeField]
+    private AudioSource _hitSound = null;
 
     private Vector3 _targetPosition;
     private Vector3 _targetRotation;
@@ -50,12 +52,14 @@ public class ShipInput : MonoBehaviour {
     {
         if(other.tag == "Meteor")
         {
+            _hitSound.Play();
             _healthBar.GetComponent<PhotonView>().RPC("UpdateHealthAmount", PhotonTargets.All, -100f);
             Destroy(other.gameObject);
         }
 
         if (other.tag == "Ufo")
         {
+            _hitSound.Play();
             _healthBar.GetComponent<PhotonView>().RPC("UpdateHealthAmount", PhotonTargets.All, -300f);
             Destroy(other.gameObject);
         }

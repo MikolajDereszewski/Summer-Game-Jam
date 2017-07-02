@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
     public bool Started { get { return _started; } }
     public float GameSpeed { get { return _gameSpeed; } }
     public bool Dead { get { return _dead; } set { _dead = value; } }
+    public float Distance { get { return _distance; } }
 
     [SerializeField]
     private MeteorScript _meteorPrefab = null;
