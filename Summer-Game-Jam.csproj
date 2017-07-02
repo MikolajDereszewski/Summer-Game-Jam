@@ -93,6 +93,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\!CreatedAssets\Scripts\Mechanics\CameraCockpitLook.cs" />
     <Compile Include="Assets\!CreatedAssets\Scripts\Mechanics\CaptainScript.cs" />
     <Compile Include="Assets\!CreatedAssets\Scripts\Mechanics\HealthBar.cs" />
     <Compile Include="Assets\!CreatedAssets\Scripts\Mechanics\MeteorScript.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Assets\!CreatedAssets\Scripts\Mechanics\ShooterScript.cs" />
     <Compile Include="Assets\!CreatedAssets\Scripts\Mechanics\ShotScript.cs" />
     <Compile Include="Assets\!CreatedAssets\Scripts\Mechanics\UfoScript.cs" />
+    <Compile Include="Assets\!CreatedAssets\Scripts\Menu\BackToMenu.cs" />
     <Compile Include="Assets\!CreatedAssets\Scripts\Menu\MainMenuScript.cs" />
     <Compile Include="Assets\!CreatedAssets\Scripts\NetCode\NetworkManager.cs" />
     <Compile Include="Assets\!CreatedAssets\Scripts\Servives\GameManager.cs" />

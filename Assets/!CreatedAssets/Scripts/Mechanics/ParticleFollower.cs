@@ -12,6 +12,6 @@ public class ParticleFollower : MonoBehaviour {
 
     private void Update()
     {
-        transform.position = new Vector3(_shipTransform.position.x, _shipTransform.position.y, _z);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(_shipTransform.position.x, _shipTransform.position.y, _z), 2f * Time.deltaTime);
     }
 }

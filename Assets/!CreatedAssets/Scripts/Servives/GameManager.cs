@@ -1,28 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
     public bool Started { get { return _started; } }
     public float GameSpeed { get { return _gameSpeed; } }
+    public bool Dead { get { return _dead; } set { _dead = value; } }
 
     [SerializeField]
     private MeteorScript _meteorPrefab = null;
     [SerializeField]
+    private MeteorScript _barrelPrefab = null;
+    [SerializeField]
     private UfoScript _ufoPrefab = null;
     [SerializeField]
     private AnimationCurve _gameSpeedCurve = new AnimationCurve();
+    [SerializeField]
+    private Text _distanceText;
 
     private bool _started;
     private bool _dead;
 
     private float _gameSpeed;
     private float _time;
+    private float _distance;
 
     private void Awake()
     {
         _gameSpeed = 1;
+        _distance = 0f;
+        _distanceText.text = "Distance: 0 LY";
         _time = 0;
         _started = false;
         _dead = false;
@@ -40,12 +49,14 @@ public class GameManager : MonoBehaviour {
         while(!(PhotonNetwork.playerList.Length == 2))
         {
             _started = false;
-            Debug.Log(PhotonNetwork.playerList.Length);
             yield return null;
         }
-        Debug.Log(PhotonNetwork.playerList.Length);
+        Camera.main.GetComponent<Animator>().enabled = true;
+        Camera.main.GetComponent<Animator>().Play("CaptainIntro");
+        Camera.main.GetComponent<CameraCockpitLook>().enabled = false;
         _started = true;
         StartCoroutine(CreateObstacles());
+        StartCoroutine(CountingDistance());
     }
 
     private IEnumerator CreateObstacles()
@@ -63,9 +74,19 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    private IEnumerator CountingDistance()
+    {
+        while(!_dead)
+        {
+            _distance += Time.deltaTime;
+            _distanceText.text = "Distance: " + ((int)_distance).ToString() + " LY";
+            yield return null;
+        }
+    }
+
     private void InstantiateMeteor()
     {
-        var meteor = Instantiate(_meteorPrefab, RandomSpawnPosition(400), Quaternion.identity);
+        var meteor = Instantiate((Random.Range(0, 10) < 7) ? _meteorPrefab : _barrelPrefab, RandomSpawnPosition(400), Quaternion.identity);
         meteor.Init(this);
     }
 

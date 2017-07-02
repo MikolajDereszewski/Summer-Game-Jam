@@ -13,7 +13,7 @@ public class MeteorScript : MonoBehaviour {
     {
         _gameManager = manager;
         _movementVector = new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f), -1f);
-        transform.localScale *= Random.Range(0.8f, 1.5f);
+        transform.localScale *= Random.Range(0.5f, 3f);
     }
 
     private void Update()

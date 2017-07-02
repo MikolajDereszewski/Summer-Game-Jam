@@ -31,7 +31,7 @@ public class ShooterScript : Photon.MonoBehaviour {
 
     void Update()
     {
-        if (!_manager.Started)
+        if (!_manager.Started && !_manager.Dead)
             return;
         _currentRotation = _rotationCockpitObject.rotation.eulerAngles;
         _rotationCockpitObject.Rotate(ClampCockpitRotation(LoadJoystickInput()) - ReturnMinusVector(_rotationCockpitObject.rotation.eulerAngles));

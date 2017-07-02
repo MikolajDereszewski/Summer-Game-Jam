@@ -19,7 +19,7 @@ public class UfoScript : MonoBehaviour {
 
     private void Update()
     {
-        if (_gameManager != null)
+        if (_gameManager != null && !_gameManager.Dead)
             _speed = _gameManager.GameSpeed * 50f;
         _movementVector = _ship.position - transform.position;
         transform.Translate((_movementVector * _speed * Time.deltaTime) / (_movementVector.magnitude * 2f));
