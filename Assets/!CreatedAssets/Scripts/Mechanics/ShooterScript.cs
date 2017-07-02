@@ -82,11 +82,11 @@ public class ShooterScript : Photon.MonoBehaviour {
     {
         float y = Input.GetAxis("Vertical");
         float x = Input.GetAxis("Horizontal");
-        return new Vector2(x, y);
+        return new Vector2(x, -y);
     }
 
     private bool IsTriggerPressed()
     {
-        return Input.GetAxis("Fire1") != 0;
+        return (Input.GetAxis("TriggerLeft") != 0 || Input.GetAxis("TriggerRight") != 0);
     }
 }
