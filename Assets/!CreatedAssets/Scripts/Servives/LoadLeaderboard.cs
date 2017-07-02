@@ -31,7 +31,7 @@ public class LoadLeaderboard : MonoBehaviour {
         for(int i = 0; i < _container.allHighScores.Count; i++)
         {
             output += (i+1).ToString() + ". " + _container.allHighScores[i].teamName + ": " + ((int)_container.allHighScores[i].score).ToString() + "\n";
-            if (i == 20)
+            if (i == 24)
                 break;
         }
         _showText.text = output;
