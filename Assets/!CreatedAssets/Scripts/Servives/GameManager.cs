@@ -51,9 +51,12 @@ public class GameManager : MonoBehaviour {
             _started = false;
             yield return null;
         }
-        Camera.main.GetComponent<Animator>().enabled = true;
-        Camera.main.GetComponent<Animator>().Play("CaptainIntro");
-        Camera.main.GetComponent<CameraCockpitLook>().enabled = false;
+        if(Camera.main != null)
+        {
+            Camera.main.GetComponent<Animator>().enabled = true;
+            Camera.main.GetComponent<Animator>().Play("CaptainIntro");
+            Camera.main.GetComponent<CameraCockpitLook>().enabled = false;
+        }
         _started = true;
         StartCoroutine(CreateObstacles());
         StartCoroutine(CountingDistance());

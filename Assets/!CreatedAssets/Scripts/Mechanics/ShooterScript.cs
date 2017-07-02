@@ -43,7 +43,7 @@ public class ShooterScript : Photon.MonoBehaviour {
     private IEnumerator Shooting()
     {
         WaitForSeconds delay = new WaitForSeconds(0.3f);
-        while(IsTriggerPressed())
+        while(IsTriggerPressed() && !_manager.Dead)
         {
             CreateShots();
             yield return delay;

@@ -14,7 +14,7 @@ public class CaptainScript : Photon.MonoBehaviour {
 
     void Update ()
     {
-        if (!_manager.Started)
+        if (!_manager.Started && !_manager.Dead)
             return;
         _ship.GetComponent<PhotonView>().RPC("SetTargetPosition", PhotonTargets.All, LoadJoystickInput());
 	}
